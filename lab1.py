@@ -1,12 +1,18 @@
+import os
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib import font_manager
 
-# Windows에서 한글 폰트 설정 (예: 나눔고딕)
-font_path = "C:/Windows/Fonts/malgun.ttf"  # Malgun Gothic 폰트 경로 (Windows 기준)
-font_manager.fontManager.addfont(font_path)
-plt.rcParams['font.family'] = 'Malgun Gothic'
+# 앱 디렉토리의 폰트 경로 설정 (Streamlit Cloud 호환)
+font_path = os.path.join(os.getcwd(), "malgun.ttf")  # malgun.ttf 파일이 앱 디렉토리에 있어야 함
+
+if os.path.exists(font_path):
+    font_manager.fontManager.addfont(font_path)
+    plt.rcParams['font.family'] = 'Malgun Gothic'  # 한글 폰트 설정
+else:
+    plt.rcParams['font.family'] = 'DejaVu Sans'  # 기본 폰트로 설정 (Streamlit Cloud 환경에서 사용 가능)
+
 plt.rcParams['axes.unicode_minus'] = False  # 마이너스 기호 깨짐 방지
 
 # 임의의 데이터 생성
