@@ -4,17 +4,17 @@ import matplotlib.pyplot as plt
 from matplotlib import font_manager
 import os
 
-# 폰트 로직 수정: 프로젝트 디렉토리의 폰트 파일 참조
+# 폰트 로직: 프로젝트 디렉토리의 폰트 파일 참조
 font_path = os.path.join(os.path.dirname(__file__), "malgun.ttf")
 font_manager.fontManager.addfont(font_path)
 plt.rcParams['font.family'] = 'Malgun Gothic'
 plt.rcParams['axes.unicode_minus'] = False  # 마이너스 기호 깨짐 방지
 
-# 임의의 데이터 생성
+# 임의의 데이터 생성 (장르 2개: Indie와 MOBA)
 data = {
     '게임 명': ['게임 A', '게임 B', '게임 C', '게임 D', '게임 E'],
-    '장르 1': ['액션', '롤플레잉', '액션', '시뮬레이션', '롤플레잉'],
-    '장르 2': ['어드벤처', '전략', '어드벤처', '전략', '어드벤처'],
+    '장르 1': ['Indie', 'MOBA', 'Indie', 'MOBA', 'Indie'],
+    '장르 2': ['MOBA', 'Indie', 'MOBA', 'Indie', 'MOBA'],
     '긍정 리뷰': [120, 80, 150, 90, 110],
     '부정 리뷰': [30, 50, 40, 60, 45]
 }
@@ -26,9 +26,9 @@ st.title('게임 개발 서비스 프로토타입')
 # 사이드바에 메시지 표시
 st.sidebar.write("두 카테고리를 모두 선택해주세요.")
 
-# 카테고리 선택
-category1 = st.sidebar.selectbox('장르 1 선택', [''] + list(df['장르 1'].unique()))
-category2 = st.sidebar.selectbox('장르 2 선택', [''] + list(df['장르 2'].unique()))
+# 카테고리 선택 (Indie와 MOBA로 제한)
+category1 = st.sidebar.selectbox('장르 1 선택', [''] + ['Indie', 'MOBA'])
+category2 = st.sidebar.selectbox('장르 2 선택', [''] + ['Indie', 'MOBA'])
 
 # 필터링된 게임 리스트
 if category1 and category2:
