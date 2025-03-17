@@ -51,8 +51,8 @@ if st.session_state.page == 'main':
             )
             
             # 전체 데이터 기반 키워드
-            positive_keywords = {'키워드 4': 34.5, '키워드 1': 21.1, '키워드 2': 32.7, '키워드 3': 10.9}
-            negative_keywords = {'키워드 4': 34.5, '키워드 1': 21.8, '키워드 2': 32.7, '키워드 3': 10.9}
+            positive_keywords = {'팀 4': 34.5, '팀 1': 21.1, '팀 2': 32.7, '팀 3': 10.9}
+            negative_keywords = {'팀 4': 34.5, '팀 1': 21.8, '팀 2': 32.7, '팀 3': 10.9}
             
             labels_positive = list(positive_keywords.keys())
             sizes_positive = list(positive_keywords.values())
