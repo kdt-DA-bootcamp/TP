@@ -1,13 +1,16 @@
 import streamlit as st
 import pandas as pd
+import matplotlib
+matplotlib.use('Agg')  # 비대화형 백엔드 설정
 import matplotlib.pyplot as plt
 from matplotlib import font_manager
+import os
 
-# Windows에서 한글 폰트 설정 (예: 나눔고딕)
-font_path = "C:/Windows/Fonts/malgun.ttf"  # Malgun Gothic 폰트 경로 (Windows 기준)
+# 프로젝트에 포함된 폰트 파일 사용
+font_path = os.path.join(os.path.dirname(__file__), "malgun.ttf")
 font_manager.fontManager.addfont(font_path)
 plt.rcParams['font.family'] = 'Malgun Gothic'
-plt.rcParams['axes.unicode_minus'] = False  # 마이너스 기호 깨짐 방지
+plt.rcParams['axes.unicode_minus'] = False
 
 # 임의의 데이터 생성
 data = {
@@ -34,7 +37,6 @@ if category1 and category2:
     filtered_df = df[(df['장르 1'] == category1) & (df['장르 2'] == category2)]
     
     if not filtered_df.empty:
-        # FILTER와 # of title을 한 줄에 표시
         st.markdown(
             f"""
             <div style='display: flex; justify-content: space-between;'>
@@ -45,43 +47,27 @@ if category1 and category2:
             unsafe_allow_html=True
         )
         
-        # 임의의 키워드 빈도 데이터 (사진의 비율을 기반으로 설정)
-        positive_keywords = {
-            '게임사 4': 34.5,
-            '게임사 1': 21.1,
-            '게임사 2': 32.7,
-            '게임사 3': 10.9
-        }
+        # 임의의 키워드 빈도 데이터
+        positive_keywords = {'게임사 4': 34.5, '게임사 1': 21.1, '게임사 2': 32.7, '게임사 3': 10.9}
+        negative_keywords = {'게임사 4': 34.5, '게임사 1': 21.8, '게임사 2': 32.7, '게임사 3': 10.9}
         
-        negative_keywords = {
-            '게임사 4': 34.5,
-            '게임사 1': 21.8,
-            '게임사 2': 32.7,
-            '게임사 3': 10.9
-        }
-        
-        # 긍정 키워드 데이터 준비
         labels_positive = list(positive_keywords.keys())
         sizes_positive = list(positive_keywords.values())
-        
-        # 부정 키워드 데이터 준비
         labels_negative = list(negative_keywords.keys())
         sizes_negative = list(negative_keywords.values())
         
-        # 색상 설정 (사진과 유사하게)
-        colors = ['#1E88E5', '#42A5F5', '#90CAF9', '#BBDEFB', '#FF6347']  # 파란 계열 + 주황
+        colors = ['#1E88E5', '#42A5F5', '#90CAF9', '#BBDEFB']
         
-        # 파이차트 생성 (Positive Keyword)
+        # 파이차트 생성
         fig1, ax1 = plt.subplots()
-        ax1.pie(sizes_positive, labels=labels_positive, autopct='%1.1f%%', colors=colors[:len(labels_positive)], startangle=90, shadow=True)
+        ax1.pie(sizes_positive, labels=labels_positive, autopct='%1.1f%%', colors=colors, startangle=90, shadow=True)
         ax1.axis('equal')
         
-        # 파이차트 생성 (Negative Keyword)
         fig2, ax2 = plt.subplots()
-        ax2.pie(sizes_negative, labels=labels_negative, autopct='%1.1f%%', colors=colors[:len(labels_negative)], startangle=90, shadow=True)
+        ax2.pie(sizes_negative, labels=labels_negative, autopct='%1.1f%%', colors=colors, startangle=90, shadow=True)
         ax2.axis('equal')
         
-        # 스트림릿에 제목과 그래프 출력
+        # 스트림릿에 그래프 출력
         col1, col2 = st.columns(2)
         with col1:
             st.markdown('<h3 style="font-weight: bold; font-size: 24px;">Positive Keyword</h3>', unsafe_allow_html=True)
