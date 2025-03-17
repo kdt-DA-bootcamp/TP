@@ -50,7 +50,7 @@ if st.session_state.page == 'main':
                 unsafe_allow_html=True
             )
             
-            # 전체 데이터 기반 키워드
+            # 전체 데이터 기반 키워드 (게임사별)
             positive_keywords = {'게임사 4': 34.5, '게임사 1': 21.1, '게임사 2': 32.7, '게임사 3': 10.9}
             negative_keywords = {'게임사 4': 34.5, '게임사 1': 21.8, '게임사 2': 32.7, '게임사 3': 10.9}
             
@@ -90,7 +90,6 @@ elif st.session_state.page == 'keywords':
     filtered_df = df[(df['장르 1'] == category1) & (df['장르 2'] == category2)]
     
     if not filtered_df.empty:
-        # 첫 번째 페이지와 동일한 FILTER와 # of title 표시
         st.markdown(
             f"""
             <div style='display: flex; justify-content: space-between;'>
@@ -101,9 +100,9 @@ elif st.session_state.page == 'keywords':
             unsafe_allow_html=True
         )
         
-        # 공통 키워드 데이터
-        common_positive_keywords = {'게임성': 50, '그래픽': 30, '스토리': 20}
-        common_negative_keywords = {'버그': 40, '최적화': 35, '서버': 25}
+        # 필터링된 데이터에 맞춘 공통 키워드 (게임사별)
+        common_positive_keywords = {'게임사 4': 30.0, '게임사 1': 25.0, '게임사 2': 35.0, '게임사 3': 10.0}
+        common_negative_keywords = {'게임사 4': 32.0, '게임사 1': 20.0, '게임사 2': 33.0, '게임사 3': 15.0}
         
         labels_positive_common = list(common_positive_keywords.keys())
         sizes_positive_common = list(common_positive_keywords.values())
