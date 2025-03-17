@@ -62,11 +62,11 @@ if st.session_state.page == 'main':
             colors = ['#1E88E5', '#42A5F5', '#90CAF9', '#BBDEFB', '#FF6347']
             
             fig1, ax1 = plt.subplots()
-            ax1.pie(sizes_positive, labels=labels_positive, autopct='%1.1f%%', colors=colors[:len(labels_positive)], startangle=90, shadow=True)
+            ax1.pie(sizes_positive, labels=labels_positive, autopct='%1.1f%%', colors=colors[:len(labels_positive)], startangle=90, shadow=False)
             ax1.axis('equal')
             
             fig2, ax2 = plt.subplots()
-            ax2.pie(sizes_negative, labels=labels_negative, autopct='%1.1f%%', colors=colors[:len(labels_negative)], startangle=90, shadow=True)
+            ax2.pie(sizes_negative, labels=labels_negative, autopct='%1.1f%%', colors=colors[:len(labels_negative)], startangle=90, shadow=False)
             ax2.axis('equal')
             
             col1, col2 = st.columns(2)
@@ -113,11 +113,11 @@ elif st.session_state.page == 'keywords':
         colors = ['#1E88E5', '#42A5F5', '#90CAF9', '#BBDEFB', '#FF6347']
         
         fig3, ax3 = plt.subplots()
-        ax3.pie(sizes_positive_common, labels=labels_positive_common, autopct='%1.1f%%', colors=colors[:len(labels_positive_common)], startangle=90, shadow=True)
+        ax3.pie(sizes_positive_common, labels=labels_positive_common, autopct='%1.1f%%', colors=colors[:len(labels_positive_common)], startangle=90, shadow=False)
         ax3.axis('equal')
         
         fig4, ax4 = plt.subplots()
-        ax4.pie(sizes_negative_common, labels=labels_negative_common, autopct='%1.1f%%', colors=colors[:len(labels_negative_common)], startangle=90, shadow=True)
+        ax4.pie(sizes_negative_common, labels=labels_negative_common, autopct='%1.1f%%', colors=colors[:len(labels_negative_common)], startangle=90, shadow=False)
         ax4.axis('equal')
         
         col1, col2 = st.columns(2)
