@@ -6,3 +6,4 @@ plotly
 pymysql
 wordcloud
 mysql.connector
+load_dotenv
