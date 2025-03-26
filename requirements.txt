@@ -5,3 +5,4 @@ numpy
 plotly
 pymysql
 wordcloud
+mysql.connector
