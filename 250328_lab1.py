@@ -26,20 +26,13 @@ positive_keywords_set = set()
 negative_keywords_set = set()
 
 # 데이터베이스 연결 함수
-def get_db_connection():
-    try:
-        connection = mysql.connector.connect(
-            host=os.getenv("DB_HOST"),
-            user=os.getenv("DB_USER"),
-            password=os.getenv("DB_PASSWORD"),
-            database=os.getenv("DB_NAME"),
-            port=int(os.getenv("DB_PORT", 3306)),
-            charset="utf8mb4"  # collation 제거
-        )
-        return connection
-    except mysql.connector.Error as err:
-        st.error(f"데이터베이스 연결 오류: {err}")
-        return None
+connection = mysql.connector.connect(
+    host=os.getenv("DB_HOST"),
+    user=os.getenv("DB_USER"),
+    password=os.getenv("DB_PASSWORD"),
+    database=os.getenv("DB_NAME"),
+    port=int(os.getenv("DB_PORT", 3306))
+)
 
 # SIMILAR_GAMES 데이터베이스 연결 함수
 @st.cache_data
