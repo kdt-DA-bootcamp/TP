@@ -3,9 +3,6 @@ matplotlib
 pandas
 numpy
 plotly
-pymysql
 wordcloud
-mysql.connector
-load_dotenv
-streamlit
+mysql-connector-python
 streamlit-elements
