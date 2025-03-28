@@ -1,11 +1,9 @@
-streamlit
+streamlit>=1.20.0
 matplotlib
 pandas
 numpy
 plotly
 wordcloud
-mysql-connector-python
-streamlit-elements
-dotenv
 mysql-connector-python>=8.0.33
-streamlit>=1.20.0
+streamlit-elements
+python-dotenv
