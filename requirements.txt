@@ -7,6 +7,5 @@ pymysql
 wordcloud
 mysql.connector
 load_dotenv
-elements
-mui
-nivo
+streamlit
+streamlit-elements
