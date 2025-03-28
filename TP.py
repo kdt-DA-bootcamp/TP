@@ -37,7 +37,7 @@ def get_db_connection():
         )
         return connection
     except mysql.connector.Error as err:
-        st.error(f"데이터베이스 연결 오류: {err}")
+        st.error(f"데이터베이스 연결 오류: {err.errno} - {err.msg}")
         return None
 
 # SIMILAR_GAMES 데이터베이스 연결 함수
