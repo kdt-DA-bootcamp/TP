@@ -7,3 +7,4 @@ wordcloud
 mysql-connector-python>=8.0.33
 streamlit-elements
 python-dotenv
+Pillow
