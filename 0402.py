@@ -257,7 +257,7 @@ if "page_history" not in st.session_state:
 # 사이드바 메뉴
 st.sidebar.subheader("전체 메뉴")
 selected_menu = st.session_state["selected_menu"]
-menu_options = ["홈 대시보드", "태그내 유저 리뷰 키워드 ", "유저 리뷰 키워드 내 타이틀 분포", "타이틀 상세"]
+menu_options = ["홈 대시보드", "전체 키워드 분포 ", "키워드 필터링", "타이틀 상세"]
 
 for option in menu_options:
     is_selected = option == selected_menu
@@ -266,7 +266,7 @@ for option in menu_options:
         if option != selected_menu:
             st.session_state["page_history"].append(option)
         st.session_state["selected_menu"] = option
-        if option == "태그내 유저 리뷰 키워드 ":
+        if option == "전체 키워드 분포 ":
             st.session_state["selected_tag"] = None
         st.rerun()
     st.sidebar.markdown(f"""
@@ -532,7 +532,7 @@ else:
             if st.button("뒤로 가기", key="back_home"):
                 go_back()
 
-    elif selected_menu == "태그내 유저 리뷰 키워드 ":
+    elif selected_menu == "전체 키워드 분포 ":
         selected_tag = st.session_state.get("selected_tag", None)
         if selected_tag:
             st.subheader(f"태그: {selected_tag} - 리뷰 키워드 분석")
@@ -641,8 +641,8 @@ else:
             col_left, col_right = st.columns([3, 1])
             with col_right:
                 if st.button("각 리뷰 타이틀 분포 보기", key="to_title_distribution"):
-                    st.session_state["page_history"].append("유저 리뷰 키워드 내 타이틀 분포")
-                    st.session_state["selected_menu"] = "유저 리뷰 키워드 내 타이틀 분포"
+                    st.session_state["page_history"].append("키워드 필터링")
+                    st.session_state["selected_menu"] = "키워드 필터링"
                     st.rerun()
 
         st.markdown("---")
@@ -651,7 +651,7 @@ else:
             if st.button("뒤로 가기", key="back_keywords"):
                 go_back()
 
-    elif selected_menu == "유저 리뷰 키워드 내 타이틀 분포":
+    elif selected_menu == "키워드 필터링":
         st.subheader("리뷰 키워드 내 타이틀 분포")
         st.write(f"선택된 태그: {', '.join(selected_tags)}")
 
